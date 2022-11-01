@@ -4,17 +4,33 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20bbdd31-e935-4ae9-8a5b-02d49ef64372" name="Changes" comment="" />
+    <list default="true" id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/ChoosePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/ChoosePage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2GIfTHoBD6mkW7pHiCBWQe2Py7N" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,6 +43,7 @@
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="memory.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -39,12 +56,24 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="20bbdd31-e935-4ae9-8a5b-02d49ef64372" name="Changes" comment="" />
+      <changelist id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="" />
       <created>1666081038693</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666081038693</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

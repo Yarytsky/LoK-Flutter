@@ -23,7 +23,7 @@ class _ChosePageState extends State<ChosePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (contex) => Login(),
+                      builder: (contex) => SignInScreen(),
                     ),
                   );
                 },
@@ -34,7 +34,7 @@ class _ChosePageState extends State<ChosePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (contex) => Register(),
+                      builder: (contex) => SignUpScreen(),
                     ),
                   );
                 },
