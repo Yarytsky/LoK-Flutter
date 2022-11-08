@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'L&R/ChoosePage.dart';
+import 'L&R/Login.dart';
 
 
 void main() {
@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ChosePage(),
+      home: SignInScreen(),
     );
   }
 }

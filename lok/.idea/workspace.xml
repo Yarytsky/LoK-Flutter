@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/L&amp;R/recover.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/ChoosePage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/ChoosePage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/ChoosePage.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +29,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2GIfTHoBD6mkW7pHiCBWQe2Py7N" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -46,6 +57,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="memory.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\GitProjects\LoK-Flutter\lok" />
+      <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\lib" />
+      <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\lib\L&amp;R" />
+      <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\lib\assets" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
