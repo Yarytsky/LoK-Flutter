@@ -3,6 +3,7 @@ import 'package:email_validator/email_validator.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:lok/L&R/Register.dart';
@@ -104,13 +105,30 @@ class _SignInScreenState extends State<SignInScreen> {
             Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
+                inputFormatters: [
+                  FilteringTextInputFormatter.deny(
+                      RegExp(r'\s')),
+                ],
                 maxLength: 20,
                 onChanged: (newValue) {
                   setState(() {
-                    isPassVal;
+                    isPassVal = validatePassword(newValue);
                   });
                 },
-                validator: passwordValidator,
+                validator: (value){
+                  if(value!.isEmpty){
+                    return "Please enter password";
+                  }else{
+                    //call function to check password
+                    bool result = validatePassword(value);
+                    if(result){
+                      // create account event
+                      return null;
+                    }else{
+                      return "Password should contain Capital, small letter";
+                    }
+                  }
+                },
                 controller: passwordController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -124,9 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintStyle: GoogleFonts.sourceSansPro(),
                   prefixIcon: Icon(CupertinoIcons.lock),
                   suffixIcon: Icon(
-                    isPassVal!
-                        ? CupertinoIcons.check_mark_circled
-                        : CupertinoIcons.multiply_circle,
+                    isPassVal! ? CupertinoIcons.check_mark_circled : CupertinoIcons.multiply_circle,
                     color: isPassVal! ? Colors.blue : Colors.red,
                   ),
                   // errorText: alfa,
@@ -205,24 +221,15 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  String? passwordValidator(PassCurrentValue) {
-    RegExp regex = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$');
-    var passNonNullValue = PassCurrentValue ?? "";
-    if (passNonNullValue.isEmpty) {
-      isPassVal = false;
-      return ("Password is required");
-    } else if (passNonNullValue.length < 12) {
-      isPassVal = false;
-      return ("Password Must be more than 12 characters");
-    } else if (passNonNullValue.length > 20) {
-      isPassVal = false;
-      return ("Password Must be less than 20 characters");
-    } else if (!regex.hasMatch(passNonNullValue)) {
-      isPassVal = false;
-      return ("Password should contain upper, lower");
+  RegExp pass_valid = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$');
+  //A function that validate user entered password
+  bool validatePassword(String pass){
+    String _password = pass.trim();
+    if(pass_valid.hasMatch(_password)){
+      return true;
+    }else{
+      return false;
     }
-    isPassVal = true;
-    return null;
   }
 
   String? emailValidator(value) =>
