@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/App/MainPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/MainPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +54,9 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="memory.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>

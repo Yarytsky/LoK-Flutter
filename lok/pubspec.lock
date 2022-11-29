@@ -71,8 +71,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.17"
-<<<<<<< Updated upstream
-=======
   equatable:
     dependency: transitive
     description:
@@ -80,7 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
->>>>>>> Stashed changes
   fake_async:
     dependency: transitive
     description:
@@ -102,8 +99,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
-<<<<<<< Updated upstream
-=======
   fl_chart:
     dependency: "direct main"
     description:
@@ -111,7 +106,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.55.2"
->>>>>>> Stashed changes
   flutter:
     dependency: "direct main"
     description: flutter

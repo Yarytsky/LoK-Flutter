@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-import 'package:flutter/material.dart';
-
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-=======
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -189,6 +179,5 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
->>>>>>> Stashed changes
   }
 }

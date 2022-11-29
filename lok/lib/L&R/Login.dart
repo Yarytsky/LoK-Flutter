@@ -19,10 +19,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   bool? isEmailVal = false;
   bool? isPassVal = false;
-<<<<<<< Updated upstream
-=======
   bool isButtonVal = false;
->>>>>>> Stashed changes
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -110,12 +107,7 @@ class _SignInScreenState extends State<SignInScreen> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
                 inputFormatters: [
-<<<<<<< Updated upstream
-                  FilteringTextInputFormatter.deny(
-                      RegExp(r'\s')),
-=======
                   FilteringTextInputFormatter.deny(RegExp(r'\s')),
->>>>>>> Stashed changes
                 ],
                 maxLength: 20,
                 onChanged: (newValue) {
@@ -123,18 +115,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     isPassVal = validatePassword(newValue);
                   });
                 },
-<<<<<<< Updated upstream
-                validator: (value){
-                  if(value!.isEmpty){
-                    return "Please enter password";
-                  }else{
-                    //call function to check password
-                    bool result = validatePassword(value);
-                    if(result){
-                      // create account event
-                      return null;
-                    }else{
-=======
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Please enter password";
@@ -144,7 +124,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       // create account event
                       return null;
                     } else {
->>>>>>> Stashed changes
                       return "Password should contain Capital, small letter";
                     }
                   }
@@ -162,13 +141,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintStyle: GoogleFonts.sourceSansPro(),
                   prefixIcon: Icon(CupertinoIcons.lock),
                   suffixIcon: Icon(
-<<<<<<< Updated upstream
-                    isPassVal! ? CupertinoIcons.check_mark_circled : CupertinoIcons.multiply_circle,
-=======
                     isPassVal!
                         ? CupertinoIcons.check_mark_circled
                         : CupertinoIcons.multiply_circle,
->>>>>>> Stashed changes
                     color: isPassVal! ? Colors.blue : Colors.red,
                   ),
                   // errorText: alfa,
@@ -200,8 +175,6 @@ class _SignInScreenState extends State<SignInScreen> {
             SizedBox(
               height: 32,
             ),
-<<<<<<< Updated upstream
-=======
             // ElevatedButton(
             //   onPressed: () {
             //     login(emailController.text, passwordController.text);
@@ -218,7 +191,6 @@ class _SignInScreenState extends State<SignInScreen> {
             //     ),
             //   ),
             // ),
->>>>>>> Stashed changes
             GestureDetector(
               onTap: () {
                 login(emailController.text, passwordController.text);
@@ -230,11 +202,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(100)),
                 child: Center(
                   child: Text(
-<<<<<<< Updated upstream
-                    'Continue',
-=======
                     'CONTINUE',
->>>>>>> Stashed changes
                     style: GoogleFonts.sniglet(
                       color: Color(0xFFFFFFFF),
                       fontSize: 16,
@@ -271,21 +239,12 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   RegExp pass_valid = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$');
-<<<<<<< Updated upstream
-  //A function that validate user entered password
-  bool validatePassword(String pass){
-    String _password = pass.trim();
-    if(pass_valid.hasMatch(_password)){
-      return true;
-    }else{
-=======
 
   bool validatePassword(String pass) {
     String _password = pass.trim();
     if (pass_valid.hasMatch(_password)) {
       return true;
     } else {
->>>>>>> Stashed changes
       return false;
     }
   }
