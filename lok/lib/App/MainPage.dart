@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lok/App/AccountPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
-import 'package:lok/Reusable%20Widgets/BaseDiveder.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
-import 'package:lok/Reusable%20Widgets/DrawlerText.dart';
 import 'package:lok/constants/colors.dart';
 
 const List<String> courseList = <String>[
@@ -144,7 +142,7 @@ class _MainPageState extends State<MainPage> {
                               child: Column(
                                 children: [
                                   Text(
-                                    'Хацкер',
+                                    'Математика',
                                     style: GoogleFonts.sourceSansPro(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w600,
@@ -152,7 +150,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                   ),
                                   Text(
-                                    "Тут тіпа опис",
+                                    "Тут опис",
                                     style: GoogleFonts.sourceSansPro(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lok/App/AccountPage.dart';
+import 'package:lok/App/Calendar.dart';
 import 'package:lok/App/MainPage.dart';
+import 'package:lok/App/Proposal.dart';
 import 'package:lok/L&R/Login.dart';
 
 void main() {
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(),
+      home: Proposal(),
     );
   }
 }

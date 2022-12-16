@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lok/App/AccountPage.dart';
+import 'package:lok/App/Calendar.dart';
 import 'package:lok/App/MainPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseDiveder.dart';
 import 'package:lok/Reusable%20Widgets/DrawlerText.dart';
@@ -23,7 +24,7 @@ class BaseDrawler extends StatelessWidget {
               BaseDivider(),
               DrawlerText(firstIcon: 'icons/House.png', NavigatorPush: MainPage(),ButtonText: "Main",),
               DrawlerText(firstIcon: 'icons/User.png', NavigatorPush: AccountPage(),ButtonText: "Profile",),
-              DrawlerText(firstIcon: 'icons/Calendar.png', NavigatorPush: AccountPage(),ButtonText: "Calendar",),
+              DrawlerText(firstIcon: 'icons/Calendar.png', NavigatorPush: Calendar(),ButtonText: "Calendar",),
               BaseDivider(),
               DrawlerText(firstIcon: 'icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
               DrawlerText(firstIcon: 'icons/PencilSimple.png', NavigatorPush: AccountPage(),ButtonText: "Appearance",),

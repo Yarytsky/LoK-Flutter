@@ -64,7 +64,7 @@ class _SignInScreenState extends State<SignInScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage('logo.png'),
+              image: AssetImage('images/logo.png'),
             ),
             SizedBox(
               height: 57,

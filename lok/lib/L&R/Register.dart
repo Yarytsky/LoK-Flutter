@@ -75,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image(
-                  image: AssetImage('logo.png'),
+                  image: AssetImage('images/logo.png'),
                 ),
                 SizedBox(
                   height: 57,
