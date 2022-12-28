@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:lok/L&R/Login.dart';
 
-const List<String> genderList = <String>['Male', 'Famale', 'Battle Helicopter Mi-8', 'Khasanator Car','Other'];
+const List<String> genderList = <String>['Male', 'Famale', 'Other'];
 const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
 
 class SignUpScreen extends StatefulWidget {

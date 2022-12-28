@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lok/App/AccountPage.dart';
 import 'package:lok/App/Calendar.dart';
 import 'package:lok/App/MainPage.dart';
+import 'package:lok/App/Settings.dart';
 import 'package:lok/Reusable%20Widgets/BaseDiveder.dart';
 import 'package:lok/Reusable%20Widgets/DrawlerText.dart';
 import 'package:lok/constants/colors.dart';
@@ -28,7 +29,7 @@ class BaseDrawler extends StatelessWidget {
               BaseDivider(),
               DrawlerText(firstIcon: 'icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
               DrawlerText(firstIcon: 'icons/PencilSimple.png', NavigatorPush: AccountPage(),ButtonText: "Appearance",),
-              DrawlerText(firstIcon: 'icons/Frame.png', NavigatorPush: AccountPage(),ButtonText: "Settings",),
+              DrawlerText(firstIcon: 'icons/Frame.png', NavigatorPush: Settings(),ButtonText: "Settings",),
               BaseDivider(),
             ],
           ),
