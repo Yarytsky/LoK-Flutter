@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
 import 'package:lok/Reusable%20Widgets/BaseOvalImage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lok/constants/models/user.dart';
 
 const List<String> languageList = <String>['English', 'Ukr', 'Other'];
 const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
@@ -26,13 +28,38 @@ class _SettingsState extends State<Settings> {
     String? languageDropdownValue = languageList.first;
     String? counrtyDropdownValue = countryList.first;
 
-    Fruit? _fruit = Fruit.man;
+    TextEditingController emailController = TextEditingController();
+    TextEditingController firstNameController = TextEditingController();
+    TextEditingController lastNameController = TextEditingController();
+    TextEditingController genderController = TextEditingController();
+    TextEditingController countryController = TextEditingController();
+
+
+    void updateUserInfo() async {
+      var dio = Dio();
+      var response = await dio.put("https://localhost:7203/user/updateuser",
+        queryParameters: {
+
+        },
+        data: {
+          'id': userId,
+          "firstName": firstNameController.text,
+          "lastName": lastNameController.text,
+          'email': emailController.text,
+          'gender': genderController.text,
+          "country": countryController.text,
+        },
+      );
+      print(response.data);
+      print(response.statusCode);
+    }
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: BaseWhite,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: BaseAppBar(),
+          child: BaseAppBar(appBarText: 'Profile',),
         ),
         drawer: BaseDrawler(),
         body: SingleChildScrollView(
@@ -46,9 +73,9 @@ class _SettingsState extends State<Settings> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Profile",
+                        "My profile",
                         style: GoogleFonts.sourceSansPro(
-                            color: AdditionalBlue,
+                            color: BaseBlack,
                             fontSize: 32,
                             fontWeight: FontWeight.w600),
                       ),
@@ -104,53 +131,13 @@ class _SettingsState extends State<Settings> {
                     )
                   ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ListTile(
-                      title: Text('Man'),
-                      leading: Radio<Fruit>(
-                        value: Fruit.woman,
-                        groupValue: _fruit,
-                        onChanged: (Fruit? value) {
-                          setState(() {
-                            _fruit = value;
-                          });
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('Woman'),
-                      leading: Radio<Fruit>(
-                        value: Fruit.man,
-                        groupValue: _fruit,
-                        onChanged: (Fruit? value) {
-                          setState(() {
-                            _fruit = value;
-                          });
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('Other'),
-                      leading: Radio<Fruit>(
-                        value: Fruit.other,
-                        groupValue: _fruit,
-                        onChanged: (Fruit? value) {
-                          setState(() {
-                            _fruit = value;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(
                   height: 16,
                 ),
                 Form(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: TextFormField(
+                    controller: firstNameController,
                     keyboardType: TextInputType.emailAddress,
                     //validator: emailValidator,
                     decoration: InputDecoration(
@@ -160,7 +147,7 @@ class _SettingsState extends State<Settings> {
                       ),
                       filled: true,
                       fillColor: Color(0xFFF0F0F0),
-                      hintText: 'Name',
+                      hintText: 'First Name',
                       hintStyle: GoogleFonts.sourceSansPro(),
                       prefixIcon: Icon(CupertinoIcons.person),
                       // errorText: alfa,
@@ -173,6 +160,7 @@ class _SettingsState extends State<Settings> {
                 Form(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: TextFormField(
+                    controller: lastNameController,
                     inputFormatters: [
                       FilteringTextInputFormatter.deny(
                           RegExp(r'\s')),
@@ -186,9 +174,32 @@ class _SettingsState extends State<Settings> {
                       counterText: '',
                       filled: true,
                       fillColor: Color(0xFFF0F0F0),
-                      hintText: 'Last name',
+                      hintText: 'Last Name',
                       hintStyle: GoogleFonts.sourceSansPro(),
                       prefixIcon: Icon(CupertinoIcons.person),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Form(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: TextFormField(
+                    controller: genderController,
+                    keyboardType: TextInputType.emailAddress,
+                    //validator: emailValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFF0F0F0),
+                      hintText: 'Gender',
+                      hintStyle: GoogleFonts.sourceSansPro(),
+                      prefixIcon: Icon(CupertinoIcons.person),
+                      // errorText: alfa,
                     ),
                   ),
                 ),
@@ -223,6 +234,7 @@ class _SettingsState extends State<Settings> {
                 Form(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: TextFormField(
+                    controller: emailController,
                     validator: emailValidator,
                     inputFormatters: [
                       FilteringTextInputFormatter.deny(
@@ -245,59 +257,82 @@ class _SettingsState extends State<Settings> {
                 SizedBox(
                   height: 16,
                 ),
-                DropdownButtonFormField<String>(
-                  value: counrtyDropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_rounded),
-                  dropdownColor: Color(0xFFCECECE),
-                  elevation: 16,
-                  style: const TextStyle(color: Color(0xFF676767)),
-                  decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
-                    prefixIcon: Icon(CupertinoIcons.placemark),
+                Form(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: TextFormField(
+                    controller: countryController,
+                    keyboardType: TextInputType.emailAddress,
+                    //validator: emailValidator,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFF0F0F0),
+                      hintText: 'Country',
+                      hintStyle: GoogleFonts.sourceSansPro(),
+                      prefixIcon: Icon(CupertinoIcons.person),
+                      // errorText: alfa,
+                    ),
                   ),
-                  onChanged: (String? value) {
-                    setState(() {
-                      counrtyDropdownValue = value!;
-                      print(counrtyDropdownValue);
-                    });
-                  },
-                  items: countryList.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
                 ),
-                SizedBox(
-                  height: 16,
-                ),
-                DropdownButtonFormField<String>(
-                  value: languageDropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_rounded),
-                  dropdownColor: Color(0xFFCECECE),
-                  elevation: 16,
-                  style: const TextStyle(color: Color(0xFF676767)),
-                  decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
-                    prefixIcon: Icon(CupertinoIcons.placemark),
-                  ),
-                  onChanged: (String? value) {
-                    setState(() {
-                      languageDropdownValue = value!;
-                      print(languageDropdownValue);
-                    });
-                  },
-                  items: languageList.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
+                // DropdownButtonFormField<String>(
+                //   value: counrtyDropdownValue,
+                //   icon: const Icon(Icons.arrow_drop_down_rounded),
+                //   dropdownColor: Color(0xFFCECECE),
+                //   elevation: 16,
+                //   style: const TextStyle(color: Color(0xFF676767)),
+                //   decoration: InputDecoration(
+                //     enabledBorder: InputBorder.none,
+                //     prefixIcon: Icon(CupertinoIcons.placemark),
+                //   ),
+                //   onChanged: (String? value) {
+                //     setState(() {
+                //       counrtyDropdownValue = value!;
+                //       print(counrtyDropdownValue);
+                //     });
+                //   },
+                //   items: countryList.map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                // ),
+                // SizedBox(
+                //   height: 16,
+                // ),
+                // DropdownButtonFormField<String>(
+                //   value: languageDropdownValue,
+                //   icon: const Icon(Icons.arrow_drop_down_rounded),
+                //   dropdownColor: Color(0xFFCECECE),
+                //   elevation: 16,
+                //   style: const TextStyle(color: Color(0xFF676767)),
+                //   decoration: InputDecoration(
+                //     enabledBorder: InputBorder.none,
+                //     prefixIcon: Icon(CupertinoIcons.placemark),
+                //   ),
+                //   onChanged: (String? value) {
+                //     setState(() {
+                //       languageDropdownValue = value!;
+                //       print(languageDropdownValue);
+                //     });
+                //   },
+                //   items: languageList.map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                // ),
                 SizedBox(
                   height: 16,
                 ),
                 GestureDetector(
+                  onTap: () {
+                    updateUserInfo();
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 40,

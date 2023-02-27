@@ -17,7 +17,7 @@ class Proposal extends StatelessWidget {
         child: Scaffold(
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(50),
-            child: BaseAppBar(),
+            child: BaseAppBar(appBarText: 'Proposal',),
           ),
           drawer: BaseDrawler(),
           body: SingleChildScrollView(

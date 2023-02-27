@@ -10,6 +10,8 @@ import 'package:lok/L&R/Login.dart';
 
 const List<String> genderList = <String>['Male', 'Famale', 'Other'];
 const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
+const List<String> roleList = <String>['Student', 'Teacher', 'Hr', 'Admin'];
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -26,21 +28,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController secondPasswordController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastnameController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+  TextEditingController countryController = TextEditingController();
+  TextEditingController roleController = TextEditingController();
 
-
-  void register(phoneNumber, userName, email, password, firstName, lastname) async {
+  void register(phoneNumber, email, password, firstName, lastname, role) async {
     try {
       var data = jsonEncode(<String, String>{
         "phoneNumber": phoneNumberController.text,
-        "userName": userNameController.text,
         "email": emailController.text,
         "password": firstPasswordController.text,
         "firstName": firstNameController.text,
         "lastname": lastnameController.text,
+        "Gender": genderController.text,
+        "Country": countryController.text,
+        "role": roleController.text,
       });
       print(data);
       Response response = await post(
-        Uri.parse('https://localhost:7203/signup'),
+        Uri.parse('https://localhost:7203/auth/signup'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -51,6 +57,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (response.statusCode == 200) {
         print('hello');
         print('Login successfully');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (contex) => SignInScreen(),
+          ),
+        );
       } else {
         print('failed');
         print(response.statusCode);
@@ -64,6 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     String? genderDropdownValue = genderList.first;
     String? counrtyDropdownValue = countryList.first;
+    String? roleDropdownValue = roleList.first;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFFAFAFA),
@@ -142,6 +155,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       counrtyDropdownValue = value!;
+                      countryController.text = value;
                       print(counrtyDropdownValue);
                     });
                   },
@@ -194,6 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onChanged: (String? value) {
                     setState(() {
                       genderDropdownValue = value!;
+                      genderController.text = value;
                       print(genderDropdownValue);
                     });
                   },
@@ -306,14 +321,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   height: 16,
                 ),
+                DropdownButtonFormField<String>(
+                  value: roleDropdownValue,
+                  icon: const Icon(Icons.arrow_drop_down_rounded),
+                  dropdownColor: Color(0xFFCECECE),
+                  elevation: 16,
+                  style: const TextStyle(color: Color(0xFF676767)),
+                  decoration: InputDecoration(
+                    enabledBorder: InputBorder.none,
+                    prefixIcon: Icon(CupertinoIcons.placemark),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      roleDropdownValue = value!;
+                      roleController.text = value;
+                      print(roleDropdownValue);
+                    });
+                  },
+                  items: roleList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(
+                  height: 16,
+                ),
                 SizedBox(
                   height: 32,
                 ),
                 GestureDetector(
                   onTap: () {
-                    register(phoneNumberController.text, userNameController.text,
-                        emailController.text, firstPasswordController.text,
-                        firstNameController.text, lastnameController.text);
+                    register(phoneNumberController.text,emailController.text,
+                        firstPasswordController.text, firstNameController.text,
+                        lastnameController.text, roleController.text);
                   },
                   child: Container(
                     height: 32,
@@ -337,6 +379,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (contex) => SignInScreen(),
+                      ),
+                    );
                   },
                   child: Text(
                     'If you  have  an account',

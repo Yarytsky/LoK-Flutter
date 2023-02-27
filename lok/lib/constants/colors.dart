@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+late String userId;
+
 //Purple
 const Color PrimaryPurple1 = Color(0xFF7678ED);
 const Color PrimaryPurple2 = Color(0xFF9A9BED);

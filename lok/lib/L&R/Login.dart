@@ -1,13 +1,19 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'package:jwt_decode/jwt_decode.dart';
+import 'package:lok/App/MainPage.dart';
 import 'package:lok/L&R/Register.dart';
 import 'package:lok/L&R/recover.dart';
+import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/models/user.dart';
+import 'package:lok/constants/services/lokApiManager.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -24,23 +30,33 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+
   void login(String email, password) async {
     try {
-      Response response = await post(
-        Uri.parse('https://localhost:7203/signin'),
+      http.Response response = await http.post(
+        Uri.parse('https://localhost:7203/auth/signin'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, String>{
-          'usernameOrEmail': emailController.text,
+          'phoneOrEmail': emailController.text,
           'password': passwordController.text,
         }),
       );
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (contex) => MainPage(),
+          ),
+        );
         print(data['accessToken']);
         print('Login successfully');
+        Map<String, dynamic> payload = Jwt.parseJwt(data['accessToken']);
+        print(payload['id']);
+        userId = payload['id'];
       } else {
         print('failed');
         print(emailController.text.runtimeType);
@@ -193,7 +209,7 @@ class _SignInScreenState extends State<SignInScreen> {
             // ),
             GestureDetector(
               onTap: () {
-                login(emailController.text, passwordController.text);
+               login(emailController.text, passwordController.text);
               },
               child: Container(
                 height: 32,

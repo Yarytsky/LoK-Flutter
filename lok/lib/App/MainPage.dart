@@ -15,8 +15,8 @@ const List<String> courseList = <String>[
 ];
 const List<String> termList = <String>[
   'All term',
-  '3',
-  '4',
+  '1',
+  '2',
 ];
 
 class MainPage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: BaseAppBar(),
+          child: BaseAppBar(appBarText: 'Subjects',),
         ),
         drawer: BaseDrawler(),
         body: Column(
@@ -131,7 +131,7 @@ class _MainPageState extends State<MainPage> {
                                 borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
                                 child: Image(
                                   image: NetworkImage(
-                                      'https://t4.ftcdn.net/jpg/03/21/43/07/360_F_321430761_qQi0CU9tzI5w1k1vJgdA02LMtXtsXvJE.jpg'),
+                                      'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
                                   fit: BoxFit.fitWidth,
                                   width: MediaQuery.of(context).size.width,
                                 ),
