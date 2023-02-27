@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/icons/ThumbsUp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/App/subjectPage.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/constants/models/user.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/constants/services/lokApiManager.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/appLogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/App/AccountPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/AccountPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/Calendar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/Calendar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/MainPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/MainPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/Proposal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/Proposal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/Settings.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/Settings.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Register.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Reusable Widgets/BaseAppBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Reusable Widgets/BaseAppBar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Reusable Widgets/BaseDrawler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Reusable Widgets/BaseDrawler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/colors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/utils.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -77,6 +64,7 @@
       <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\assets\icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\assets\images" />
       <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\lib" />
       <recent name="D:\Projects\GitProjects\LoK-Flutter\lok" />
       <recent name="D:\Projects\GitProjects\LoK-Flutter\lok\lib\L&amp;R" />

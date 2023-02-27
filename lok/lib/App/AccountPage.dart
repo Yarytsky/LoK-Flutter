@@ -33,6 +33,7 @@ class _AccountPageState extends State<AccountPage> {
     var dio = Dio();
     var response = await dio.get(
         'https://localhost:7203/user/getuser/${userId}');
+    print(response.statusCode);
     final decoded = response.data as Map<String, dynamic>;
     final movie = Movie.fromJson(decoded);
     setState(() {
