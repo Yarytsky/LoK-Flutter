@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:registerpage/register_page.dart';
+import 'package:lok/App/AccountPage.dart';
+import 'package:lok/App/MainPage.dart';
+import 'package:lok/App/Proposal.dart';
+import 'package:lok/App/Settings.dart';
+import 'package:lok/App/StatisticsPage.dart';
+import 'package:lok/L&R/Login.dart';
+
+import 'App/DiaryPage.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: StatisticsPage(),
     );
   }
 }
