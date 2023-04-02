@@ -34,7 +34,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void login(String email, password) async {
     try {
       http.Response response = await http.post(
-        Uri.parse('https://localhost:7203/auth/signin'),
+        Uri.parse('https://lokserver.azurewebsites.net/auth/signin'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

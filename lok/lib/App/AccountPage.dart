@@ -13,6 +13,7 @@ import 'package:lok/constants/colors.dart';
 import 'package:lok/constants/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:lok/constants/services/lokApiManager.dart';
+import 'package:rive/rive.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -31,8 +32,8 @@ class _AccountPageState extends State<AccountPage> {
 
   void getUserInfo() async {
     var dio = Dio();
-    var response = await dio.get(
-        'https://localhost:7203/user/getuser/${userId}');
+    var response =
+        await dio.get('https://localhost:7203/user/getuser/${userId}');
     final decoded = response.data as Map<String, dynamic>;
     final movie = Movie.fromJson(decoded);
     setState(() {
@@ -48,8 +49,13 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget _buildGridView() {
-    if(movies.isEmpty){
-      return Center(child: CircularProgressIndicator(),);
+    if (movies.isEmpty) {
+      return Center(
+        child: RiveAnimation.network(
+          'https://cdn.rive.app/animations/vehicles.riv',
+          animations: ['idle', 'curves'],
+        ),
+      );
     } else {
       return FutureAppBuilder(movie: movies.first);
     }
@@ -57,7 +63,10 @@ class _AccountPageState extends State<AccountPage> {
 }
 
 class FutureAppBuilder extends StatelessWidget {
-  const FutureAppBuilder({Key? key, required this.movie,}) : super(key: key);
+  const FutureAppBuilder({
+    Key? key,
+    required this.movie,
+  }) : super(key: key);
   final Movie movie;
 
   @override
@@ -131,7 +140,9 @@ class FutureAppBuilder extends StatelessWidget {
                             TextOne: 'Country: ', TextTwo: '${movie.country}'),
                         ProfileLineText(
                             TextOne: 'Gender: ', TextTwo: '${movie.gender}'),
-                        ProfileLineText(TextOne: 'Absense: ', TextTwo: '${movie.attendance}'),
+                        ProfileLineText(
+                            TextOne: 'Absense: ',
+                            TextTwo: '${movie.attendance}'),
                       ],
                     )
                   ],
@@ -139,8 +150,7 @@ class FutureAppBuilder extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding:
-                    EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                     child: Text(
                       'Attendence chart',
                       style: GoogleFonts.sourceSansPro(
@@ -155,7 +165,7 @@ class FutureAppBuilder extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                         padding:
-                        EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
                           "Number% attendance",
                           style: GoogleFonts.sourceSansPro(
@@ -167,8 +177,7 @@ class FutureAppBuilder extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding:
-                    EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                     child: Text(
                       'Progress',
                       style: GoogleFonts.sourceSansPro(
@@ -183,7 +192,7 @@ class FutureAppBuilder extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                         padding:
-                        EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
                           "Number GPA",
                           style: GoogleFonts.sourceSansPro(
