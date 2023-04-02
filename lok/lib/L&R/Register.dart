@@ -46,7 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
       print(data);
       Response response = await post(
-        Uri.parse('http://lokserver.azurewebsites.net/auth/signup'),
+        Uri.parse('https://localhost:7203/auth/signup'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
