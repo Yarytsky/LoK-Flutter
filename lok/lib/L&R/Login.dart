@@ -122,6 +122,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
+                obscureText: true,
                 inputFormatters: [
                   FilteringTextInputFormatter.deny(RegExp(r'\s')),
                 ],

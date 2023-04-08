@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "lastname": lastnameController.text,
         "Gender": genderController.text,
         "Country": countryController.text,
-        "role": roleController.text,
+        "role": "Student",
       });
       print(data);
       Response response = await post(
@@ -139,33 +139,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: 16,
-                // ),
-                // DropdownButtonFormField<String>(
-                //   value: counrtyDropdownValue,
-                //   icon: const Icon(Icons.arrow_drop_down_rounded),
-                //   dropdownColor: Color(0xFFCECECE),
-                //   elevation: 16,
-                //   style: const TextStyle(color: Color(0xFF676767)),
-                //   decoration: InputDecoration(
-                //     enabledBorder: InputBorder.none,
-                //     prefixIcon: Icon(CupertinoIcons.placemark),
-                //   ),
-                //   onChanged: (String? value) {
-                //     setState(() {
-                //       counrtyDropdownValue = value!;
-                //       countryController.text = value;
-                //       print(counrtyDropdownValue);
-                //     });
-                //   },
-                //   items: countryList.map<DropdownMenuItem<String>>((String value) {
-                //     return DropdownMenuItem<String>(
-                //       value: value,
-                //       child: Text(value),
-                //     );
-                //   }).toList(),
-                // ),
+                SizedBox(
+                  height: 16,
+                ),
+                DropdownButtonFormField<String>(
+                  value: counrtyDropdownValue,
+                  icon: const Icon(Icons.arrow_drop_down_rounded),
+                  dropdownColor: Color(0xFFCECECE),
+                  elevation: 16,
+                  style: const TextStyle(color: Color(0xFF676767)),
+                  decoration: InputDecoration(
+                    enabledBorder: InputBorder.none,
+                    prefixIcon: Icon(CupertinoIcons.placemark),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      counrtyDropdownValue = value!;
+                      countryController.text = value;
+                      print(counrtyDropdownValue);
+                    });
+                  },
+                  items: countryList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
                 SizedBox(
                   height: 16,
                 ),
@@ -192,33 +192,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: 16,
-                // ),
-                // DropdownButtonFormField<String>(
-                //   value: genderDropdownValue,
-                //   icon: const Icon(Icons.arrow_drop_down_rounded),
-                //   dropdownColor: Color(0xFFCECECE),
-                //   elevation: 16,
-                //   style: const TextStyle(color: Color(0xFF676767)),
-                //   decoration: InputDecoration(
-                //     enabledBorder: InputBorder.none,
-                //     prefixIcon: Icon(CupertinoIcons.person_2),
-                //   ),
-                //   onChanged: (String? value) {
-                //     setState(() {
-                //       genderDropdownValue = value!;
-                //       genderController.text = value;
-                //       print(genderDropdownValue);
-                //     });
-                //   },
-                //   items: genderList.map<DropdownMenuItem<String>>((String value) {
-                //     return DropdownMenuItem<String>(
-                //       value: value,
-                //       child: Text(value),
-                //     );
-                //   }).toList(),
-                // ),
+                SizedBox(
+                  height: 16,
+                ),
+                DropdownButtonFormField<String>(
+                  value: genderDropdownValue,
+                  icon: const Icon(Icons.arrow_drop_down_rounded),
+                  dropdownColor: Color(0xFFCECECE),
+                  elevation: 16,
+                  style: const TextStyle(color: Color(0xFF676767)),
+                  decoration: InputDecoration(
+                    enabledBorder: InputBorder.none,
+                    prefixIcon: Icon(CupertinoIcons.person_2),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      genderDropdownValue = value!;
+                      genderController.text = value;
+                      print(genderDropdownValue);
+                    });
+                  },
+                  items: genderList.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
                 SizedBox(
                   height: 16,
                 ),
@@ -321,33 +321,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(
                   height: 16,
                 ),
-                DropdownButtonFormField<String>(
-                  value: roleDropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down_rounded),
-                  dropdownColor: Color(0xFFCECECE),
-                  elevation: 16,
-                  style: const TextStyle(color: Color(0xFF676767)),
-                  decoration: InputDecoration(
-                    enabledBorder: InputBorder.none,
-                    prefixIcon: Icon(CupertinoIcons.placemark),
-                  ),
-                  onChanged: (String? value) {
-                    setState(() {
-                      roleDropdownValue = value!;
-                      roleController.text = value;
-                      print(roleDropdownValue);
-                    });
-                  },
-                  items: roleList.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-                SizedBox(
-                  height: 16,
-                ),
+                // DropdownButtonFormField<String>(
+                //   value: roleDropdownValue,
+                //   icon: const Icon(Icons.arrow_drop_down_rounded),
+                //   dropdownColor: Color(0xFFCECECE),
+                //   elevation: 16,
+                //   style: const TextStyle(color: Color(0xFF676767)),
+                //   decoration: InputDecoration(
+                //     enabledBorder: InputBorder.none,
+                //     prefixIcon: Icon(CupertinoIcons.placemark),
+                //   ),
+                //   onChanged: (String? value) {
+                //     setState(() {
+                //       roleDropdownValue = value!;
+                //       roleController.text = value;
+                //       print(roleDropdownValue);
+                //     });
+                //   },
+                //   items: roleList.map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                // ),
+                // SizedBox(
+                //   height: 16,
+                // ),
                 SizedBox(
                   height: 32,
                 ),
