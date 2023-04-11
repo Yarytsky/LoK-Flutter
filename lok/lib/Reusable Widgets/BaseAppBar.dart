@@ -23,7 +23,7 @@ class BaseAppBar extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.all(3),
-            child: BaseOvalImg(height: 40,width: 40,),
+            child: BaseOvalImg(height: 40,width: 40, borderWidth: 3,),
           ),
         ],
       ),

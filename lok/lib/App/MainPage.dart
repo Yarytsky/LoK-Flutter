@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,19 +6,12 @@ import 'package:lok/App/AccountPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/models/subject.dart';
+import 'package:lok/constants/services/lokApiManager.dart';
+import 'package:lok/constants/style.dart';
 
-const List<String> courseList = <String>[
-  'All Courses',
-  'First',
-  'Second',
-  'Third',
-  'Fourth'
-];
-const List<String> termList = <String>[
-  'All term',
-  '1',
-  '2',
-];
+const List<String> courseList = <String>['All Courses', 'First', 'Second', 'Third', 'Fourth'];
+const List<String> termList = <String>['All term', '1', '2',];
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -27,12 +21,26 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final myProducts = List<String>.generate(1000, (i) => 'Product $i');
+  List<Subject> subjectsInfo = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadMovies();
+  }
+
+  void _loadMovies() async {
+    var popularMovies = await MoviesApiService().getSubjects();
+    setState(() {
+      subjectsInfo.addAll(popularMovies);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     String? courseDropdownValue = courseList.first;
     String? termDropdownValue = termList.first;
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -47,15 +55,15 @@ class _MainPageState extends State<MainPage> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: SecondOrange2,
+                      color: PrimaryPurple1,
                     ),
                     child: DropdownButtonFormField<String>(
                       alignment: Alignment.center ,
                       value: courseDropdownValue,
                       icon: const Icon(Icons.arrow_drop_down_rounded),
-                      dropdownColor: Color(0xFFCECECE),
+                      dropdownColor: Base20,
                       elevation: 16,
-                      style: TextStyle(color: Color(0xFF676767)),
+                      style: sourcesansprostyle20w400B90,
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                       ),
@@ -69,7 +77,7 @@ class _MainPageState extends State<MainPage> {
                           .map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Padding(padding: EdgeInsets.symmetric(horizontal: 10),child: Text(value, style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w400,fontSize: 24,),)),
+                          child: Padding(padding: EdgeInsets.symmetric(horizontal: 10),child: Text(value, style: sourcesansprostyle24w600BB)),
                         );
                       }).toList(),
                     ),
@@ -78,15 +86,15 @@ class _MainPageState extends State<MainPage> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: SecondOrange4,
+                      color: PrimaryPurple4,
                     ),
                     child: DropdownButtonFormField<String>(
                       alignment: Alignment.center,
                       value: termDropdownValue,
                       icon: const Icon(Icons.arrow_drop_down_rounded),
-                      dropdownColor: Color(0xFFCECECE),
+                      dropdownColor: Base20,
                       elevation: 16,
-                      style: const TextStyle(color: Color(0xFF676767)),
+                      style: sourcesansprostyle20w400B90,
                       decoration: InputDecoration(
                         enabledBorder: InputBorder.none,
                       ),
@@ -97,10 +105,10 @@ class _MainPageState extends State<MainPage> {
                         });
                       },
                       items:
-                          termList.map<DropdownMenuItem<String>>((String value) {
+                      termList.map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
-                          child: Padding(padding: EdgeInsets.symmetric(horizontal: 10),child: Text(value, style: GoogleFonts.sourceSansPro(fontWeight: FontWeight.w400,fontSize: 24,),)),
+                          child: Padding(padding: EdgeInsets.symmetric(horizontal: 10),child: Text(value, style: sourcesansprostyle24w600BB)),
                         );
                       }).toList(),
                     ),
@@ -110,7 +118,7 @@ class _MainPageState extends State<MainPage> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: subjectsInfo.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: EdgeInsets.symmetric(vertical: 7, horizontal: 5),
@@ -138,33 +146,35 @@ class _MainPageState extends State<MainPage> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 7),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Математика',
-                                    style: GoogleFonts.sourceSansPro(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w600,
-                                      color: BaseBlack,
-                                    ),
-                                  ),
-                                  Text(
-                                    "Тут опис",
-                                    style: GoogleFonts.sourceSansPro(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: Base90,
-                                    ),
-                                  ),
-                                  Text('Term 1',
-                                    style: GoogleFonts.sourceSansPro(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: Base70,
-                                    ),
-                                  ),
-                                ],
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                '${subjectsInfo[index].name}',
+                                style: GoogleFonts.sourceSansPro(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                  color: BaseBlack,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                "${subjectsInfo[index].description}",
+                                style: GoogleFonts.sourceSansPro(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Base90,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text('Term 1',
+                                style: GoogleFonts.sourceSansPro(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Base70,
+                                ),
                               ),
                             ),
                           ],
@@ -179,3 +189,4 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+

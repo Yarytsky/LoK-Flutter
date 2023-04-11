@@ -34,7 +34,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void login(String email, password) async {
     try {
       http.Response response = await http.post(
-        Uri.parse('https://localhost:7203/auth/signin'),
+        Uri.parse('${MoviesApiService().dio.options.baseUrl}/auth/signin'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -52,11 +52,12 @@ class _SignInScreenState extends State<SignInScreen> {
             builder: (contex) => MainPage(),
           ),
         );
-        print(data['accessToken']);
         print('Login successfully');
         Map<String, dynamic> payload = Jwt.parseJwt(data['accessToken']);
-        print(payload['id']);
         userId = payload['id'];
+        accesstoken = data['accessToken'];
+        print("Access token: $accesstoken");
+        print("Id: $userId");
       } else {
         print('failed');
         print(emailController.text.runtimeType);

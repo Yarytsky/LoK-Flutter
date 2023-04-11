@@ -28,6 +28,12 @@ dynamic sourcesansprostyle24w400B90 = GoogleFonts.sourceSansPro(
   color: Base90,
 );
 
+dynamic sourcesansprostyle24w600BW = GoogleFonts.sourceSansPro(
+  fontWeight: FontWeight.w600,
+  fontSize: 24,
+  color: BaseWhite,
+);
+
 // size 20
 dynamic sourcesansprostyle20w600BB = GoogleFonts.sourceSansPro(
   fontWeight: FontWeight.w600,

@@ -4,26 +4,38 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lok/App/MainPage.dart';
 import 'package:lok/L&R/Login.dart';
+import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/models/subject.dart';
 import 'package:lok/constants/models/user.dart';
 
-class MoviesApiService{
-  final _dio = Dio();
+class MoviesApiService {
+  final dio = Dio();
+  late User movies;
+  List<User> userInfo = [];
+
 
   MoviesApiService() {
-    _dio.options.baseUrl = 'https://localhost:7203';
+    dio.options.baseUrl = 'https://localhost:7203';
   }
 
-  // void login(EmailController, PasswordController) async{
-  //   Response response = await _dio.post('/auth/signin',
-  //   data: {EmailController, PasswordController});
-  //   print(response.statusCode);
-  // }
+  Future<List<Subject>> getSubjects() async {
+    var dio = Dio();
+    var response = await dio.get(
+      '${MoviesApiService().dio.options.baseUrl}/subject/getsubjects',
+      options: Options(
+          headers: {
+            'Authorization' : 'Bearer $accesstoken',
+          }
+      ),
+    );
+    print(response.statusCode);
+    return parseMovies(response);
+  }
 
-  // void login(String email, password, controller1, controller2) async {
-  //   Response response = await _dio.post('https://localhost:7203/auth/signin');
-  //   data:
-  //   {
-  //     'usernameOrEmail': controller1,
-  //   }
-  // }
+  List<Subject> parseMovies(dynamic response) {
+    final results = List<Map<String, dynamic>>.from(response.data['subjects']);
+    List<Subject> movies =
+    results.map((movieData) => Subject.fromJson(movieData)).toList(growable: false);
+    return movies;
+  }
 }

@@ -8,7 +8,9 @@ import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
 import 'package:lok/Reusable%20Widgets/BaseOvalImage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:lok/constants/indus.dart';
 import 'package:lok/constants/models/user.dart';
+import 'package:lok/constants/services/lokApiManager.dart';
 
 const List<String> languageList = <String>['English', 'Ukr', 'Other'];
 const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
@@ -34,13 +36,16 @@ class _SettingsState extends State<Settings> {
     TextEditingController genderController = TextEditingController();
     TextEditingController countryController = TextEditingController();
 
+    List<User> userInfo = [];
 
     void updateUserInfo() async {
       var dio = Dio();
-      var response = await dio.put("https://localhost:7203/user/updateuser",
-        queryParameters: {
-
-        },
+      var response = await dio.put("${MoviesApiService().dio.options.baseUrl}/user/updateuser",
+        options: Options(
+            headers: {
+              'Authorization' : 'Bearer $accesstoken',
+            }
+        ),
         data: {
           'id': userId,
           "firstName": firstNameController.text,
@@ -90,13 +95,14 @@ class _SettingsState extends State<Settings> {
                     BaseOvalImg(
                       width: 120,
                       height: 120,
+                      borderWidth: 6,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Text("Name Name",
+                            Text("$firstName $lastName",
                                 style: GoogleFonts.sourceSansPro(
                                     color: BaseBlack,
                                     fontSize: 24,

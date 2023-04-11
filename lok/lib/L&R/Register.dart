@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:lok/L&R/Login.dart';
+import 'package:lok/constants/services/lokApiManager.dart';
 
 const List<String> genderList = <String>['Male', 'Famale', 'Other'];
 const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
@@ -46,7 +47,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
       print(data);
       Response response = await post(
-        Uri.parse('https://localhost:7203/auth/signup'),
+        Uri.parse('${MoviesApiService().dio.options.baseUrl}/auth/signup'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

@@ -1,24 +1,26 @@
-class Movie {
-  final String firstName;
-  final String lastname;
-  final String email;
-  final String normalizedUserName;
+class User {
+  final dynamic firstName;
+  final dynamic lastname;
+  final dynamic email;
+  final dynamic normalizedUserName;
   final dynamic country;
   final dynamic gender;
   final dynamic attendance;
+  final dynamic role;
 
-  Movie({
+  User({
     required this.firstName,
     required this.lastname,
     required this.email,
     required this.normalizedUserName,
-    required this.country,
-    required this.gender,
-    required this.attendance,
+    required this.role,
+    this.country,
+    this.gender,
+    this.attendance,
   });
 
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    return Movie(
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
       firstName: json['firstName'],
       lastname: json['lastname'],
       email: json['email'],
@@ -26,12 +28,7 @@ class Movie {
       country: json['country'],
       gender: json['gender'],
       attendance: json['attendance'],
+      role: json['role'],
     );
   }
-}
-class loginUser{
-  final String usernameOrEmail;
-  final String password;
-
-  loginUser(this.usernameOrEmail, this.password);
 }

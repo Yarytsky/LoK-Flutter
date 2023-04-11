@@ -41,6 +41,7 @@ class _DiaryPageState extends State<DiaryPage> {
                   child: BaseOvalImg(
                     height: 40,
                     width: 40,
+                    borderWidth: 6,
                   ),
                 ),
               ],

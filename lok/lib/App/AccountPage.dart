@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lok/App/Settings.dart';
 import 'package:lok/L&R/Login.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
@@ -10,10 +11,10 @@ import 'package:lok/Reusable%20Widgets/BaseOvalImage.dart';
 import 'package:lok/Reusable%20Widgets/Charts.dart';
 import 'package:lok/Reusable%20Widgets/ProfileLineText.dart';
 import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/indus.dart';
 import 'package:lok/constants/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:lok/constants/services/lokApiManager.dart';
-import 'package:rive/rive.dart';
 
 class AccountPage extends StatefulWidget {
   @override
@@ -22,7 +23,7 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   @override
-  List<Movie> movies = [];
+  List<User> userInfo = MoviesApiService().userInfo;
 
   @override
   void initState() {
@@ -32,13 +33,21 @@ class _AccountPageState extends State<AccountPage> {
 
   void getUserInfo() async {
     var dio = Dio();
-    var response =
-        await dio.get('https://localhost:7203/user/getuser/${userId}');
-    final decoded = response.data as Map<String, dynamic>;
-    final movie = Movie.fromJson(decoded);
+    var response = await dio.get(
+        '${MoviesApiService().dio.options.baseUrl}/user/getuser/${userId}',
+      options: Options(
+        headers: {
+          'Authorization' : 'Bearer $accesstoken',
+        }
+      ),
+    );
+    print(response.statusCode);
+    final decoded = response.data['user'] as Map<String, dynamic>;
+    final user = User.fromJson(decoded);
     setState(() {
-      movies.add(movie);
+      userInfo.add(user);
     });
+    firstName = user.firstName;
   }
 
   @override
@@ -49,25 +58,17 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   Widget _buildGridView() {
-    if (movies.isEmpty) {
-      return Center(
-        child: RiveAnimation.network(
-          'https://cdn.rive.app/animations/vehicles.riv',
-          animations: ['idle', 'curves'],
-        ),
-      );
+    if(userInfo.isEmpty){
+      return Center(child: CircularProgressIndicator(),);
     } else {
-      return FutureAppBuilder(movie: movies.first);
+      return FutureAppBuilder(user: userInfo.first);
     }
   }
 }
 
 class FutureAppBuilder extends StatelessWidget {
-  const FutureAppBuilder({
-    Key? key,
-    required this.movie,
-  }) : super(key: key);
-  final Movie movie;
+  const FutureAppBuilder({Key? key, required this.user,}) : super(key: key);
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +98,17 @@ class FutureAppBuilder extends StatelessWidget {
                             fontSize: 32,
                             fontWeight: FontWeight.w600),
                       ),
-                      Image(image: AssetImage('icons/PencilSimple.png')),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (contex) => Settings(),
+                            ),
+                          );
+                        },
+                          child: Image(image: AssetImage('icons/PencilSimple.png'))
+                      ),
                     ],
                   ),
                 ),
@@ -107,19 +118,20 @@ class FutureAppBuilder extends StatelessWidget {
                     BaseOvalImg(
                       width: 120,
                       height: 120,
+                      borderWidth: 6,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            Text("${movie.firstName} ${movie.lastname}",
+                            Text("${user.firstName} ${user.lastname}",
                                 style: GoogleFonts.sourceSansPro(
                                     color: BaseBlack,
                                     fontSize: 24,
                                     fontWeight: FontWeight.w600)),
                             Text(
-                              '(Student)',
+                              '(${user.role})',
                               style: GoogleFonts.sourceSansPro(
                                 color: Base50,
                                 fontSize: 14,
@@ -133,16 +145,14 @@ class FutureAppBuilder extends StatelessWidget {
                         ),
                         ProfileLineText(
                             TextOne: 'Phone Number: ',
-                            TextTwo: '${movie.normalizedUserName}'),
+                            TextTwo: '${user.normalizedUserName}'),
                         ProfileLineText(
-                            TextOne: 'Mail: ', TextTwo: '${movie.email}'),
+                            TextOne: 'Mail: ', TextTwo: '${user.email}'),
                         ProfileLineText(
-                            TextOne: 'Country: ', TextTwo: '${movie.country}'),
+                            TextOne: 'Country: ', TextTwo: '${user.country}'),
                         ProfileLineText(
-                            TextOne: 'Gender: ', TextTwo: '${movie.gender}'),
-                        ProfileLineText(
-                            TextOne: 'Absense: ',
-                            TextTwo: '${movie.attendance}'),
+                            TextOne: 'Gender: ', TextTwo: '${user.gender}'),
+                        ProfileLineText(TextOne: 'Absense: ', TextTwo: '${user.attendance}'),
                       ],
                     )
                   ],
@@ -150,7 +160,8 @@ class FutureAppBuilder extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                    padding:
+                    EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                     child: Text(
                       'Attendence chart',
                       style: GoogleFonts.sourceSansPro(
@@ -165,7 +176,7 @@ class FutureAppBuilder extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                         padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                        EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
                           "Number% attendance",
                           style: GoogleFonts.sourceSansPro(
@@ -177,7 +188,8 @@ class FutureAppBuilder extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+                    padding:
+                    EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                     child: Text(
                       'Progress',
                       style: GoogleFonts.sourceSansPro(
@@ -192,7 +204,7 @@ class FutureAppBuilder extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Padding(
                         padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                        EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
                           "Number GPA",
                           style: GoogleFonts.sourceSansPro(

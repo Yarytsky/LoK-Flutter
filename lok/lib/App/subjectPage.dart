@@ -21,7 +21,7 @@ class _SubjectPageState extends State<SubjectPage> {
     var response = await dio.get(
         'https://localhost:7203/user/getuser/${userId}');
     final decoded = response.data as Map<String, dynamic>;
-    final movie = Movie.fromJson(decoded);
+    final movie = User.fromJson(decoded);
   }
 
   @override

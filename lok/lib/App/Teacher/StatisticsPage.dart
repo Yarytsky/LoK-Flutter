@@ -9,9 +9,9 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 
-import '../Reusable Widgets/BaseOvalImage.dart';
-import '../constants/utils.dart';
-import 'DiaryPage.dart';
+import '../../Reusable Widgets/BaseOvalImage.dart';
+import '../../constants/utils.dart';
+import '../DiaryPage.dart';
 import 'GroupStatisticsPage.dart';
 
 class StatisticsPage extends StatefulWidget {
@@ -67,6 +67,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     child: BaseOvalImg(
                       height: 40,
                       width: 40,
+                      borderWidth: 6,
                     ),
                   ),
                 ),
