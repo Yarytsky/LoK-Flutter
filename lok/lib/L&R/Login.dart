@@ -26,6 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
   bool? isEmailVal = false;
   bool? isPassVal = false;
   bool isButtonVal = false;
+  bool isShow = false;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

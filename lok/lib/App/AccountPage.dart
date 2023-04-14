@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_to_byte/image_to_byte.dart';
 import 'package:lok/App/Settings.dart';
 import 'package:lok/L&R/Login.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
@@ -59,8 +62,8 @@ class _AccountPageState extends State<AccountPage> {
 
   Widget _buildGridView() {
     if(userInfo.isEmpty){
-      return Center(child: CircularProgressIndicator(),);
-    } else {
+      return Center(child: CircularProgressIndicator());
+    } else{
       return FutureAppBuilder(user: userInfo.first);
     }
   }
@@ -107,7 +110,7 @@ class FutureAppBuilder extends StatelessWidget {
                             ),
                           );
                         },
-                          child: Image(image: AssetImage('icons/PencilSimple.png'))
+                          child: ImageFromByteArray(imagePath: 'assets/images/appLogo.png',),
                       ),
                     ],
                   ),
@@ -217,6 +220,36 @@ class FutureAppBuilder extends StatelessWidget {
             ),
           ),
         );
+      },
+    );
+  }
+}
+
+Future<Uint8List> imageToByteArray(String imagePath) async {
+  final file = File(imagePath);
+  return await file.readAsBytes();
+}
+
+class ImageFromByteArray extends StatelessWidget {
+  final String imagePath;
+
+  ImageFromByteArray({required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Uint8List>(
+      future: imageToByteArray(imagePath),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Image.memory(
+            snapshot.data!,
+            fit: BoxFit.cover,
+          );
+        } else if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        } else {
+          return CircularProgressIndicator();
+        }
       },
     );
   }

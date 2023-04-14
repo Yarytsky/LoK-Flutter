@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_to_byte/image_to_byte.dart';
 import 'package:lok/App/AccountPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
@@ -27,6 +30,15 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _loadMovies();
+  }
+
+  Uint8List? image;
+
+  void _imageToByte() async {
+    Uint8List iByte = await imageToByte(
+        'https://vet-centre.by/wp-content/uploads/2016/11/kot-eti-udivitelnye-kotiki.jpg');
+    setState(() => image = iByte);
+    print(iByte);
   }
 
   void _loadMovies() async {
