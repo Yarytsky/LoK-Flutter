@@ -150,7 +150,7 @@ class _TeacherSubjectPageState extends State<TeacherSubjectPage> {
                                 children: [
                                   CircleAvatar(
                                       backgroundImage: NetworkImage(
-                                          'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png')),
+                                          'https://focus.ua/static/storage/thumbs/920x465/b/42/97c9d265-c31d2c43aadcbd194ec7df2f7981742b.jpg')),
                                   Text(
                                     'Name Name',
                                     style: sourcesansprostyle20w400B90,

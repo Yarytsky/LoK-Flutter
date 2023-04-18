@@ -5,6 +5,8 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:jwt_decode/jwt_decode.dart';
@@ -26,11 +28,10 @@ class _SignInScreenState extends State<SignInScreen> {
   bool? isEmailVal = false;
   bool? isPassVal = false;
   bool isButtonVal = false;
-  bool isShow = false;
+  bool isShow = true;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
 
   void login(String email, password) async {
     try {
@@ -124,7 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Form(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: TextFormField(
-                obscureText: true,
+                obscureText: isShow,
                 inputFormatters: [
                   FilteringTextInputFormatter.deny(RegExp(r'\s')),
                 ],
@@ -212,7 +213,7 @@ class _SignInScreenState extends State<SignInScreen> {
             // ),
             GestureDetector(
               onTap: () {
-               login(emailController.text, passwordController.text);
+                login(emailController.text, passwordController.text);
               },
               child: Container(
                 height: 32,

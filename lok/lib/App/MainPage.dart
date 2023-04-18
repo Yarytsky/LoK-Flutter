@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_to_byte/image_to_byte.dart';
 import 'package:lok/App/AccountPage.dart';
+import 'package:lok/App/DiaryPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
@@ -30,15 +31,6 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _loadMovies();
-  }
-
-  Uint8List? image;
-
-  void _imageToByte() async {
-    Uint8List iByte = await imageToByte(
-        'https://vet-centre.by/wp-content/uploads/2016/11/kot-eti-udivitelnye-kotiki.jpg');
-    setState(() => image = iByte);
-    print(iByte);
   }
 
   void _loadMovies() async {
@@ -132,64 +124,75 @@ class _MainPageState extends State<MainPage> {
               child: ListView.builder(
                   itemCount: subjectsInfo.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(vertical: 7, horizontal: 5),
-                      child: Container(
-                        height: 175,
-                        decoration: BoxDecoration(
-                          color: Base30,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+                    return GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (contex) => DiaryPage(name: '${subjectsInfo[index].name}', description: '${subjectsInfo[index].description}',),
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                                child: Image(
-                                  image: NetworkImage(
-                                      'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
-                                  fit: BoxFit.fitWidth,
-                                  width: MediaQuery.of(context).size.width,
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 7, horizontal: 5),
+                        child: Container(
+                          height: 175,
+                          decoration: BoxDecoration(
+                            color: Base30,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                                  child: Image(
+                                    image: NetworkImage(
+                                        'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
+                                    fit: BoxFit.fitWidth,
+                                    width: MediaQuery.of(context).size.width,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                '${subjectsInfo[index].name}',
-                                style: GoogleFonts.sourceSansPro(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w600,
-                                  color: BaseBlack,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  '${subjectsInfo[index].name}',
+                                  style: GoogleFonts.sourceSansPro(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600,
+                                    color: BaseBlack,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                "${subjectsInfo[index].description}",
-                                style: GoogleFonts.sourceSansPro(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Base90,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(
+                                  "${subjectsInfo[index].description}",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.sourceSansPro(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: Base90,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text('Term 1',
-                                style: GoogleFonts.sourceSansPro(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Base70,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text('Term 1',
+                                  style: GoogleFonts.sourceSansPro(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    color: Base70,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );

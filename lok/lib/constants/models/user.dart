@@ -7,6 +7,7 @@ class User {
   final dynamic gender;
   final dynamic attendance;
   final dynamic role;
+  final dynamic photo;
 
   User({
     required this.firstName,
@@ -14,6 +15,7 @@ class User {
     required this.email,
     required this.normalizedUserName,
     required this.role,
+    required this.photo,
     this.country,
     this.gender,
     this.attendance,
@@ -29,6 +31,7 @@ class User {
       gender: json['gender'],
       attendance: json['attendance'],
       role: json['role'],
+      photo: json['photo']
     );
   }
 }

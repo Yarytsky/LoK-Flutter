@@ -46,6 +46,9 @@ dependencies:
   percent_indicator: ^4.2.3
   animations: ^2.0.7
   image_to_byte: ^1.0.0
+  get: ^4.6.5
+  draggable_home: ^1.0.4
+  image_picker: ^0.8.7+3
 
 dev_dependencies:
   flutter_test:

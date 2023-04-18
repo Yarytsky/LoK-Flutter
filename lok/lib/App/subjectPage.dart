@@ -47,7 +47,7 @@ class _SubjectPageState extends State<SubjectPage> {
                     Expanded(
                       child: Image(
                         image: NetworkImage(
-                            'https://t4.ftcdn.net/jpg/03/21/43/07/360_F_321430761_qQi0CU9tzI5w1k1vJgdA02LMtXtsXvJE.jpg'),
+                            'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
                         fit: BoxFit.fitWidth,
                         width: MediaQuery.of(context).size.width,
                       ),

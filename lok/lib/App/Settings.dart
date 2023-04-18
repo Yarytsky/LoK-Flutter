@@ -1,21 +1,30 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
 import 'package:lok/Reusable%20Widgets/BaseOvalImage.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:lok/constants/indus.dart';
+import 'package:lok/constants/userSave.dart';
 import 'package:lok/constants/models/user.dart';
 import 'package:lok/constants/services/lokApiManager.dart';
+import 'package:image_picker/image_picker.dart';
 
 const List<String> languageList = <String>['English', 'Ukr', 'Other'];
-const List<String> countryList = <String>['Ukraine', 'United Kingdom', 'Poland'];
+const List<String> countryList = <String>[
+  'Ukraine',
+  'United Kingdom',
+  'Poland'
+];
 
-enum Fruit { woman, man, other}
+enum Fruit { woman, man, other }
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -30,29 +39,50 @@ class _SettingsState extends State<Settings> {
     String? languageDropdownValue = languageList.first;
     String? counrtyDropdownValue = countryList.first;
 
-    TextEditingController emailController = TextEditingController();
-    TextEditingController firstNameController = TextEditingController();
-    TextEditingController lastNameController = TextEditingController();
-    TextEditingController genderController = TextEditingController();
-    TextEditingController countryController = TextEditingController();
+    TextEditingController emailController = TextEditingController(text: email);
+    TextEditingController firstNameController =
+        TextEditingController(text: firstName);
+    TextEditingController lastNameController =
+        TextEditingController(text: lastName);
+    TextEditingController genderController =
+        TextEditingController(text: gender);
+    TextEditingController countryController =
+        TextEditingController(text: country);
+    TextEditingController phoneController = TextEditingController(text: phone);
+    TextEditingController photoController = TextEditingController();
 
     List<User> userInfo = [];
 
+    File? _image;
+
+    Future<void> _pickImage(ImageSource source) async {
+      print('Screen destroyed');
+      final pickedFile = await ImagePicker().pickImage(source: source);
+
+      setState(() {
+        _image = File(pickedFile!.path);
+      });
+    }
+
     void updateUserInfo() async {
       var dio = Dio();
-      var response = await dio.put("${MoviesApiService().dio.options.baseUrl}/user/updateuser",
-        options: Options(
-            headers: {
-              'Authorization' : 'Bearer $accesstoken',
-            }
-        ),
+      final bytes = await _image!.readAsBytes();
+      final base64Image = base64Encode(bytes);
+
+      var response = await dio.put(
+        "${MoviesApiService().dio.options.baseUrl}/user/updateuser",
+        options: Options(headers: {
+          'Authorization': 'Bearer $accesstoken',
+        }),
         data: {
           'id': userId,
           "firstName": firstNameController.text,
           "lastName": lastNameController.text,
+          'phone': phoneController.text,
           'email': emailController.text,
           'gender': genderController.text,
           "country": countryController.text,
+          'photo': base64Image,
         },
       );
       print(response.data);
@@ -64,7 +94,9 @@ class _SettingsState extends State<Settings> {
         backgroundColor: BaseWhite,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: BaseAppBar(appBarText: 'Profile',),
+          child: BaseAppBar(
+            appBarText: 'Profile',
+          ),
         ),
         drawer: BaseDrawler(),
         body: SingleChildScrollView(
@@ -88,14 +120,21 @@ class _SettingsState extends State<Settings> {
                     ],
                   ),
                 ),
-                Padding(padding: EdgeInsets.symmetric(horizontal: 16),child: Divider()),
+                Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    child: Divider()),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    BaseOvalImg(
-                      width: 120,
-                      height: 120,
-                      borderWidth: 6,
+                    GestureDetector(
+                      onTap: () async {
+                        _pickImage(ImageSource.gallery);
+                      },
+                      child: BaseOvalImg(
+                        width: 120,
+                        height: 120,
+                        borderWidth: 6,
+                      ),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,8 +207,7 @@ class _SettingsState extends State<Settings> {
                   child: TextFormField(
                     controller: lastNameController,
                     inputFormatters: [
-                      FilteringTextInputFormatter.deny(
-                          RegExp(r'\s')),
+                      FilteringTextInputFormatter.deny(RegExp(r'\s')),
                     ],
                     maxLength: 20,
                     decoration: InputDecoration(
@@ -215,9 +253,9 @@ class _SettingsState extends State<Settings> {
                 Form(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   child: TextFormField(
+                    controller: phoneController,
                     inputFormatters: [
-                      FilteringTextInputFormatter.deny(
-                          RegExp(r'\s')),
+                      FilteringTextInputFormatter.deny(RegExp(r'\s')),
                     ],
                     maxLength: 20,
                     decoration: InputDecoration(
@@ -243,17 +281,17 @@ class _SettingsState extends State<Settings> {
                     controller: emailController,
                     validator: emailValidator,
                     inputFormatters: [
-                      FilteringTextInputFormatter.deny(
-                          RegExp(r'\s')),
+                      FilteringTextInputFormatter.deny(RegExp(r'\s')),
                     ],
-                    maxLength: 20,
+                    maxLength: 30,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(4),
                       ),
                       counterText: '',
-                      filled: true, fillColor: Color(0xFFF0F0F0),
+                      filled: true,
+                      fillColor: Color(0xFFF0F0F0),
                       hintText: 'Email',
                       hintStyle: GoogleFonts.sourceSansPro(),
                       prefixIcon: Icon(Icons.mail_outlined),
@@ -346,7 +384,15 @@ class _SettingsState extends State<Settings> {
                       color: PrimaryPurple1,
                       borderRadius: BorderRadius.all(Radius.circular(90.0)),
                     ),
-                    child: Align(alignment: Alignment.center,child: Text("Save", style: GoogleFonts.nunitoSans(color: Colors.white,fontSize: 24,fontWeight: FontWeight.w700),)),
+                    child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Save",
+                          style: GoogleFonts.nunitoSans(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700),
+                        )),
                   ),
                 ),
               ],

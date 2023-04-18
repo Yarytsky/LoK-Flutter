@@ -1,3 +1,4 @@
+import 'package:draggable_home/draggable_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,8 +6,7 @@ import 'package:lok/App/AccountPage.dart';
 import 'package:lok/Reusable%20Widgets/BaseAppBar.dart';
 import 'package:lok/Reusable%20Widgets/BaseDrawler.dart';
 import 'package:lok/constants/colors.dart';
-
-import '../Reusable Widgets/BaseOvalImage.dart';
+import 'package:lok/constants/style.dart';
 
 const List<String> termList = <String>[
   'Mathematical analysis',
@@ -15,15 +15,17 @@ const List<String> termList = <String>[
 ];
 
 class DiaryPage extends StatefulWidget {
-  const DiaryPage({Key? key}) : super(key: key);
+  final String name;
+  final String description;
+
+  const DiaryPage({Key? key, required this.name, required this.description})
+      : super(key: key);
 
   @override
   State<DiaryPage> createState() => _DiaryPageState();
 }
 
 class _DiaryPageState extends State<DiaryPage> {
-  final myProducts = List<String>.generate(1000, (i) => 'Product $i');
-
   @override
   Widget build(BuildContext context) {
     String? termDropdownValue = termList.first;
@@ -31,21 +33,8 @@ class _DiaryPageState extends State<DiaryPage> {
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
-          child: AppBar(
-            backgroundColor: BaseWhite,
-            flexibleSpace: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(3),
-                  child: BaseOvalImg(
-                    height: 40,
-                    width: 40,
-                    borderWidth: 6,
-                  ),
-                ),
-              ],
-            ),
+          child: BaseAppBar(
+            appBarText: '',
           ),
         ),
         drawer: BaseDrawler(),
@@ -95,12 +84,12 @@ class _DiaryPageState extends State<DiaryPage> {
               ],
             ),
             Center(
-              child: Container(
-                child: Image(
-                    image: AssetImage('assets/images/Frame19.jpg'),
-                    height: 50,
-                    fit: BoxFit.fill),
-                height: 80.0,
+              child: Image(
+                image: NetworkImage(
+                    'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
+                fit: BoxFit.fitWidth,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.1,
               ),
             ),
             Center(
@@ -112,7 +101,7 @@ class _DiaryPageState extends State<DiaryPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Mathematical analysis',
+                        '${widget.name}',
                         style: GoogleFonts.sourceSansPro(
                           fontSize: 24,
                           fontWeight: FontWeight.w600,

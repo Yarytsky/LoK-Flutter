@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +15,7 @@ import 'package:lok/Reusable%20Widgets/BaseOvalImage.dart';
 import 'package:lok/Reusable%20Widgets/Charts.dart';
 import 'package:lok/Reusable%20Widgets/ProfileLineText.dart';
 import 'package:lok/constants/colors.dart';
-import 'package:lok/constants/indus.dart';
+import 'package:lok/constants/userSave.dart';
 import 'package:lok/constants/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:lok/constants/services/lokApiManager.dart';
@@ -33,6 +34,9 @@ class _AccountPageState extends State<AccountPage> {
     super.initState();
     getUserInfo();
   }
+
+
+
 
   void getUserInfo() async {
     var dio = Dio();
@@ -100,17 +104,6 @@ class FutureAppBuilder extends StatelessWidget {
                             color: AdditionalBlue,
                             fontSize: 32,
                             fontWeight: FontWeight.w600),
-                      ),
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (contex) => Settings(),
-                            ),
-                          );
-                        },
-                          child: ImageFromByteArray(imagePath: 'assets/images/appLogo.png',),
                       ),
                     ],
                   ),
