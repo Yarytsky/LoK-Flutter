@@ -46,3 +46,10 @@ dynamic sourcesansprostyle20w400B90 = GoogleFonts.sourceSansPro(
   fontSize: 20,
   color: Base90,
 );
+
+// size 16
+dynamic sourcesansprostyle16w400B90 = GoogleFonts.sourceSansPro(
+  fontWeight: FontWeight.w400,
+  fontSize: 16,
+  color: Base90,
+);

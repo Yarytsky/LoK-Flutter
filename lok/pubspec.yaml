@@ -49,6 +49,7 @@ dependencies:
   get: ^4.6.5
   draggable_home: ^1.0.4
   image_picker: ^0.8.7+3
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

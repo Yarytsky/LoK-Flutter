@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
@@ -38,6 +39,11 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       subjectsInfo.addAll(popularMovies);
     });
+  }
+
+  Uint8List a(b) {
+    Uint8List bytesImage = const Base64Decoder().convert(b);
+    return bytesImage;
   }
 
   @override

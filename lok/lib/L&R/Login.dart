@@ -30,8 +30,10 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isButtonVal = false;
   bool isShow = true;
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController =
+      TextEditingController(text: 'maxim.redya@gmail.com');
+  TextEditingController passwordController =
+      TextEditingController(text: 'Password1!');
 
   void login(String email, password) async {
     try {
@@ -100,6 +102,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 validator: emailValidator,
                 controller: emailController,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1,
+                        color: isEmailVal! ? Colors.blue : Colors.red
+                    ),
+                  ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(4),
@@ -109,12 +117,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: 'Email',
                   hintStyle: GoogleFonts.sourceSansPro(),
                   prefixIcon: Icon(Icons.mail_outlined),
-                  suffixIcon: Icon(
-                    isEmailVal!
-                        ? CupertinoIcons.check_mark_circled
-                        : CupertinoIcons.multiply_circle,
-                    color: isEmailVal! ? Colors.blue : Colors.red,
-                  ),
                   // errorText: alfa,
                 ),
               ),
@@ -150,6 +152,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 },
                 controller: passwordController,
                 decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 1,
+                        color: isPassVal! ? Colors.blue : Colors.red
+                    ),
+                  ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                     borderRadius: BorderRadius.circular(4),
@@ -160,11 +168,14 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: 'Password',
                   hintStyle: GoogleFonts.sourceSansPro(),
                   prefixIcon: Icon(CupertinoIcons.lock),
-                  suffixIcon: Icon(
-                    isPassVal!
-                        ? CupertinoIcons.check_mark_circled
-                        : CupertinoIcons.multiply_circle,
-                    color: isPassVal! ? Colors.blue : Colors.red,
+                  suffixIcon: IconButton(
+                    onPressed: (){
+                      setState(() {
+                        isShow = !isShow;
+                      });
+                    },
+                    icon: Icon(
+                        isShow ? Icons.visibility : Icons.visibility_off),
                   ),
                   // errorText: alfa,
                 ),
