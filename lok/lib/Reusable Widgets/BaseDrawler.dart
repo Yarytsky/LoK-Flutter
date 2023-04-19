@@ -9,6 +9,7 @@ import 'package:lok/L&R/Login.dart';
 import 'package:lok/Reusable%20Widgets/BaseDiveder.dart';
 import 'package:lok/Reusable%20Widgets/DrawlerText.dart';
 import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/userSave.dart';
 
 class BaseDrawler extends StatefulWidget {
   const BaseDrawler({
@@ -22,6 +23,7 @@ class BaseDrawler extends StatefulWidget {
 class _BaseDrawlerState extends State<BaseDrawler> {
   void logout() async {
     userId.replaceAll('', '');
+    photo == null;
     Navigator.push(
       context,
       MaterialPageRoute(

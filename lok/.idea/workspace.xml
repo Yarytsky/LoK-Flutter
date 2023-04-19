@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4f12732-98b7-4282-9bc5-ddebc2b96eb2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/constants/models/proposal.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/DiaryPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/DiaryPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/MainPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/MainPage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/App/Proposal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App/Proposal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/L&amp;R/Login.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/Reusable Widgets/BaseDrawler.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Reusable Widgets/BaseDrawler.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/services/lokApiManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/services/lokApiManager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/style.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/style.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Reusable Widgets/BaseOvalImage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Reusable Widgets/BaseOvalImage.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
