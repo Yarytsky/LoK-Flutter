@@ -23,7 +23,7 @@ class MoviesApiService {
   Future<List<Subject>> getSubjects() async {
     var dio = Dio();
     var response = await dio.get(
-      '${MoviesApiService().dio.options.baseUrl}/subject/getsubjects',
+      '${MoviesApiService().dio.options.baseUrl}/subject/getsubjectforstudent/${userId}',
       options: Options(
           headers: {
             'Authorization' : 'Bearer $accesstoken',
@@ -48,8 +48,29 @@ class MoviesApiService {
     return parseProposal(response);
   }
 
+  Future<List<Subject>> getSubject(subjectId) async {
+    var dio = Dio();
+    var response = await dio.get(
+      '${MoviesApiService().dio.options.baseUrl}/subject/getsubjectbyid/${subjectId}',
+      options: Options(
+          headers: {
+            'Authorization' : 'Bearer $accesstoken',
+          }
+      ),
+    );
+    print(response.statusCode);
+    return parseMovie(response);
+  }
+
   List<Subject> parseMovies(dynamic response) {
     final results = List<Map<String, dynamic>>.from(response.data['subjects']);
+    List<Subject> movies =
+    results.map((movieData) => Subject.fromJson(movieData)).toList(growable: false);
+    return movies;
+  }
+
+  List<Subject> parseMovie(dynamic response) {
+    final results = List<Map<String, dynamic>>.from(response.data['subject']);
     List<Subject> movies =
     results.map((movieData) => Subject.fromJson(movieData)).toList(growable: false);
     return movies;

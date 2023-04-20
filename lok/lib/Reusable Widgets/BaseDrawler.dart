@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lok/App/AccountPage.dart';
+import 'package:lok/App/Appearance.dart';
 import 'package:lok/App/Calendar.dart';
 import 'package:lok/App/MainPage.dart';
 import 'package:lok/App/Proposal.dart';
@@ -44,11 +45,11 @@ class _BaseDrawlerState extends State<BaseDrawler> {
               BaseDivider(),
               DrawlerText(firstIcon: 'icons/House.png', NavigatorPush: MainPage(),ButtonText: "Main",),
               DrawlerText(firstIcon: 'icons/User.png', NavigatorPush: AccountPage(),ButtonText: "Profile",),
-              DrawlerText(firstIcon: 'icons/Calendar.png', NavigatorPush: TableBasicsExample(),ButtonText: "Calendar",),
+              DrawlerText(firstIcon: 'icons/Calendar.png', NavigatorPush: Apereance(),ButtonText: "Calendar",),
               DrawlerText(firstIcon: 'icons/ThumbsUp.png', NavigatorPush: ProposalPage(),ButtonText: "Proposals",),
               BaseDivider(),
               DrawlerText(firstIcon: 'icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
-              DrawlerText(firstIcon: 'icons/PencilSimple.png', NavigatorPush: AccountPage(),ButtonText: "Appearance",),
+              DrawlerText(firstIcon: 'icons/PencilSimple.png', NavigatorPush: Apereance(),ButtonText: "Appearance",),
               DrawlerText(firstIcon: 'icons/Frame.png', NavigatorPush: Settings(),ButtonText: "Settings",),
               BaseDivider(),
             ],

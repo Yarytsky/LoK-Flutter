@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
@@ -67,7 +66,7 @@ class _ProposalPageState extends State<ProposalPage> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: BaseAppBar(
-            appBarText: 'Subjects',
+            appBarText: 'Proposal',
           ),
         ),
         drawer: BaseDrawler(),
@@ -102,7 +101,7 @@ class _ProposalPageState extends State<ProposalPage> {
                                       top: Radius.circular(10)),
                                   child: Image.memory(
                                     a(proposalsInfo[index].image),
-                                    fit: BoxFit.fitWidth,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),

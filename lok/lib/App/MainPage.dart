@@ -135,7 +135,7 @@ class _MainPageState extends State<MainPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (contex) => DiaryPage(name: '${subjectsInfo[index].name}', description: '${subjectsInfo[index].description}',),
+                            builder: (contex) => DiaryPage(name: '${subjectsInfo[index].name}', description: '${subjectsInfo[index].description}',id: '${subjectsInfo[index].id}',),
                           ),
                         );
                       },

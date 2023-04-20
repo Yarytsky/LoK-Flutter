@@ -66,9 +66,6 @@ class _SettingsState extends State<Settings> {
 
     void updateUserInfo() async {
       var dio = Dio();
-      final bytes = await _image!.readAsBytes();
-      final base64Image = base64Encode(bytes);
-
       var response = await dio.put(
         "${MoviesApiService().dio.options.baseUrl}/user/updateuser",
         options: Options(headers: {
@@ -82,7 +79,6 @@ class _SettingsState extends State<Settings> {
           'email': emailController.text,
           'gender': genderController.text,
           "country": countryController.text,
-          'photo': base64Image,
         },
       );
       print(response.data);

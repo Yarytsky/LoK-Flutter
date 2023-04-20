@@ -14,7 +14,7 @@ import 'package:lok/App/subjectPage.dart';
 import 'package:lok/L&R/Login.dart';
 import 'package:lok/L&R/Register.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -26,11 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: SignInScreen(),
     );
   }
 }
-

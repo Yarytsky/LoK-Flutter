@@ -17,6 +17,10 @@ import 'package:lok/constants/colors.dart';
 import 'package:lok/constants/models/user.dart';
 import 'package:lok/constants/services/lokApiManager.dart';
 
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -105,8 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 1,
-                        color: isEmailVal! ? Colors.blue : Colors.red
-                    ),
+                        color: isEmailVal! ? Colors.blue : Colors.red),
                   ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
@@ -154,9 +157,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                        width: 1,
-                        color: isPassVal! ? Colors.blue : Colors.red
-                    ),
+                        width: 1, color: isPassVal! ? Colors.blue : Colors.red),
                   ),
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
@@ -169,13 +170,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintStyle: GoogleFonts.sourceSansPro(),
                   prefixIcon: Icon(CupertinoIcons.lock),
                   suffixIcon: IconButton(
-                    onPressed: (){
+                    onPressed: () {
                       setState(() {
                         isShow = !isShow;
                       });
                     },
-                    icon: Icon(
-                        isShow ? Icons.visibility : Icons.visibility_off),
+                    icon:
+                        Icon(isShow ? Icons.visibility : Icons.visibility_off),
                   ),
                   // errorText: alfa,
                 ),
@@ -233,7 +234,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(100)),
                 child: Center(
                   child: Text(
-                    'CONTINUE',
+                    '',
                     style: GoogleFonts.sniglet(
                       color: Color(0xFFFFFFFF),
                       fontSize: 16,

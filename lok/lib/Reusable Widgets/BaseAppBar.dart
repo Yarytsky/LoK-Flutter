@@ -18,6 +18,8 @@ class BaseAppBar extends StatefulWidget {
 }
 
 class _BaseAppBarState extends State<BaseAppBar> {
+  ValueNotifier<String> selectedLanguage = ValueNotifier('Eng');
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

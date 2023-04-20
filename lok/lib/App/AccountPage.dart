@@ -54,7 +54,8 @@ class _AccountPageState extends State<AccountPage> {
     setState(() {
       userInfo.add(user);
     });
-    firstName = user.firstName;
+    gender = user.gender;
+    country = user.country;
   }
 
   @override
@@ -174,7 +175,7 @@ class FutureAppBuilder extends StatelessWidget {
                         padding:
                         EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
-                          "Number% attendance",
+                          "80% attendance",
                           style: GoogleFonts.sourceSansPro(
                               color: AdditionalBlue,
                               fontSize: 24,
@@ -202,7 +203,7 @@ class FutureAppBuilder extends StatelessWidget {
                         padding:
                         EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                         child: Text(
-                          "Number GPA",
+                          "10 GPA",
                           style: GoogleFonts.sourceSansPro(
                               color: AdditionalBlue,
                               fontSize: 24,
