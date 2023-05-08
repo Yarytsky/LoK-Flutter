@@ -48,7 +48,7 @@ class _BaseDrawlerState extends State<BaseDrawler> {
               DrawlerText(firstIcon: 'assets/icons/Calendar.png', NavigatorPush: Apereance(),ButtonText: "Calendar",),
               DrawlerText(firstIcon: 'assets/icons/ThumbsUp.png', NavigatorPush: ProposalPage(),ButtonText: "Proposals",),
               BaseDivider(),
-              DrawlerText(firstIcon: 'assets/icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
+              DrawlerText(firstIcon: 'assets/icons/Translate.png', NavigatorPush: Apereance(),ButtonText: "Language",),
               DrawlerText(firstIcon: 'assets/icons/PencilSimple.png', NavigatorPush: Apereance(),ButtonText: "Appearance",),
               DrawlerText(firstIcon: 'assets/icons/Frame.png', NavigatorPush: Settings(),ButtonText: "Settings",),
               BaseDivider(),

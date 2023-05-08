@@ -64,9 +64,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
             builder: (contex) => SignInScreen(),
           ),
         );
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Login succsess')));
       } else {
         print('failed');
         print(response.statusCode);
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Some problems?')));
       }
     } catch (e) {
       print(e.toString());

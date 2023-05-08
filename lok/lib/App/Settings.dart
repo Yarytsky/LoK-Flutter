@@ -81,6 +81,8 @@ class _SettingsState extends State<Settings> {
           "country": countryController.text,
         },
       );
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Updated')));
       print(response.data);
       print(response.statusCode);
     }

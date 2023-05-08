@@ -65,11 +65,15 @@ class _SignInScreenState extends State<SignInScreen> {
         accesstoken = data['accessToken'];
         print("Access token: $accesstoken");
         print("Id: $userId");
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Login succsess')));
       } else {
         print('failed');
         print(emailController.text);
         print(passwordController.text);
         print(response.statusCode);
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Some problems?')));
       }
     } catch (e) {
       print(e.toString());

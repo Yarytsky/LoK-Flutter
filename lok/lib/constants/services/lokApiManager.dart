@@ -18,7 +18,7 @@ class MoviesApiService {
 
 
   MoviesApiService() {
-    dio.options.baseUrl = 'https://localhost:7203';
+    dio.options.baseUrl = 'https://lakeofknowledgeserver.azurewebsites.net';
   }
 
   Future<List<Subject>> getSubjects() async {
