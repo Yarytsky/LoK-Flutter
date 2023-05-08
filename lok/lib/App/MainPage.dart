@@ -135,7 +135,7 @@ class _MainPageState extends State<MainPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (contex) => DiaryPage(name: '${subjectsInfo[index].name}', description: '${subjectsInfo[index].description}',id: '${subjectsInfo[index].id}',),
+                            builder: (contex) => DiaryPage(name: '${subjectsInfo[index].name}', description: '${subjectsInfo[index].description}',id: '${subjectsInfo[index].id}', image: '${subjectsInfo[index].image}',),
                           ),
                         );
                       },
@@ -156,11 +156,9 @@ class _MainPageState extends State<MainPage> {
                               Expanded(
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
-                                  child: Image(
-                                    image: NetworkImage(
-                                        'https://t3.ftcdn.net/jpg/03/66/54/56/360_F_366545675_F8yauzlroVONS25PuOP0oT1z5YRFxO63.jpg'),
-                                    fit: BoxFit.fitWidth,
-                                    width: MediaQuery.of(context).size.width,
+                                  child: Image.memory(
+                                    a(subjectsInfo[index].image),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),

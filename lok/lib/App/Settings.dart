@@ -112,7 +112,7 @@ class _SettingsState extends State<Settings> {
                             fontSize: 32,
                             fontWeight: FontWeight.w600),
                       ),
-                      Image(image: AssetImage('icons/PencilSimple.png')),
+                      Image(image: AssetImage('assets/icons/PencilSimple.png')),
                     ],
                   ),
                 ),

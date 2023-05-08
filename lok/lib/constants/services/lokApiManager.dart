@@ -6,6 +6,7 @@ import 'package:lok/App/MainPage.dart';
 import 'package:lok/App/Proposal.dart';
 import 'package:lok/L&R/Login.dart';
 import 'package:lok/constants/colors.dart';
+import 'package:lok/constants/models/lection.dart';
 import 'package:lok/constants/models/proposal.dart';
 import 'package:lok/constants/models/subject.dart';
 import 'package:lok/constants/models/user.dart';
@@ -34,6 +35,20 @@ class MoviesApiService {
     return parseMovies(response);
   }
 
+  Future<List<Lection>> getLection(dynamic id) async {
+    var dio = Dio();
+    var response = await dio.get(
+      '${MoviesApiService().dio.options.baseUrl}/lection/getlectionsbysubjectid/${id}',
+      options: Options(
+          headers: {
+            'Authorization' : 'Bearer $accesstoken',
+          }
+      ),
+    );
+    print(response.statusCode);
+    return parseLection(response);
+  }
+
   Future<List<Proposall>> getProposal() async {
     var dio = Dio();
     var response = await dio.get(
@@ -60,6 +75,13 @@ class MoviesApiService {
     );
     print(response.statusCode);
     return parseMovie(response);
+  }
+
+  List<Lection> parseLection(dynamic response) {
+    final results = List<Map<String, dynamic>>.from(response.data['lections']);
+    List<Lection> movies =
+    results.map((movieData) => Lection.fromJson(movieData)).toList(growable: false);
+    return movies;
   }
 
   List<Subject> parseMovies(dynamic response) {

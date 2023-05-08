@@ -35,9 +35,9 @@ class _SignInScreenState extends State<SignInScreen> {
   bool isShow = true;
 
   TextEditingController emailController =
-      TextEditingController(text: 'maxim.redya@gmail.com');
+      TextEditingController();
   TextEditingController passwordController =
-      TextEditingController(text: 'Password1!');
+      TextEditingController();
 
   void login(String email, password) async {
     try {
@@ -51,7 +51,6 @@ class _SignInScreenState extends State<SignInScreen> {
           'password': passwordController.text,
         }),
       );
-
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         Navigator.push(
@@ -68,7 +67,6 @@ class _SignInScreenState extends State<SignInScreen> {
         print("Id: $userId");
       } else {
         print('failed');
-        print(emailController.text.runtimeType);
         print(emailController.text);
         print(passwordController.text);
         print(response.statusCode);
@@ -89,7 +87,7 @@ class _SignInScreenState extends State<SignInScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage('images/logo.png'),
+              image: AssetImage('assets/images/logo.png'),
             ),
             SizedBox(
               height: 57,
@@ -234,7 +232,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(100)),
                 child: Center(
                   child: Text(
-                    '',
+                    'CONTINUE',
                     style: GoogleFonts.sniglet(
                       color: Color(0xFFFFFFFF),
                       fontSize: 16,

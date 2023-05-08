@@ -41,16 +41,16 @@ class _BaseDrawlerState extends State<BaseDrawler> {
         children: [
           Column(
             children: [
-              Image(image: AssetImage('images/logo.png')),
+              Image(image: AssetImage('assets/images/logo.png')),
               BaseDivider(),
-              DrawlerText(firstIcon: 'icons/House.png', NavigatorPush: MainPage(),ButtonText: "Main",),
-              DrawlerText(firstIcon: 'icons/User.png', NavigatorPush: AccountPage(),ButtonText: "Profile",),
-              DrawlerText(firstIcon: 'icons/Calendar.png', NavigatorPush: Apereance(),ButtonText: "Calendar",),
-              DrawlerText(firstIcon: 'icons/ThumbsUp.png', NavigatorPush: ProposalPage(),ButtonText: "Proposals",),
+              DrawlerText(firstIcon: 'assets/icons/House.png', NavigatorPush: MainPage(),ButtonText: "Main",),
+              DrawlerText(firstIcon: 'assets/icons/User.png', NavigatorPush: AccountPage(),ButtonText: "Profile",),
+              DrawlerText(firstIcon: 'assets/icons/Calendar.png', NavigatorPush: Apereance(),ButtonText: "Calendar",),
+              DrawlerText(firstIcon: 'assets/icons/ThumbsUp.png', NavigatorPush: ProposalPage(),ButtonText: "Proposals",),
               BaseDivider(),
-              DrawlerText(firstIcon: 'icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
-              DrawlerText(firstIcon: 'icons/PencilSimple.png', NavigatorPush: Apereance(),ButtonText: "Appearance",),
-              DrawlerText(firstIcon: 'icons/Frame.png', NavigatorPush: Settings(),ButtonText: "Settings",),
+              DrawlerText(firstIcon: 'assets/icons/Translate.png', NavigatorPush: AccountPage(),ButtonText: "Language",),
+              DrawlerText(firstIcon: 'assets/icons/PencilSimple.png', NavigatorPush: Apereance(),ButtonText: "Appearance",),
+              DrawlerText(firstIcon: 'assets/icons/Frame.png', NavigatorPush: Settings(),ButtonText: "Settings",),
               BaseDivider(),
             ],
           ),
@@ -62,7 +62,7 @@ class _BaseDrawlerState extends State<BaseDrawler> {
               },
               child: Row(
                 children: [
-                  Image(image: AssetImage('icons/LogOut.png')),
+                  Image(image: AssetImage('assets/icons/LogOut.png')),
                   Text("Log out", style: GoogleFonts.sourceSansPro(color: AdditionalBlue,fontSize: 20,fontWeight: FontWeight.w600),),
                 ],
               ),
